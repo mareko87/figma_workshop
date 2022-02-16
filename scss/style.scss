@@ -13,6 +13,7 @@ body {
 
 a {
 	text-decoration: none;
+	color: $white;
 }
 ul {
 	list-style: none;
@@ -24,4 +25,136 @@ h4,
 h5,
 h6 {
 	font-weight: 300;
+}
+
+nav {
+	background-color: $primary_bg;
+	color: $white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 5%;
+	.logo {
+		font-size: 1.8rem;
+		font-weight: 300;
+	}
+
+	.drop_down {
+		flex: 1;
+
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+
+		ul {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			li {
+				margin: 0 1em;
+			}
+		}
+		.right {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			& > div {
+				margin-right: 15px;
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+			& > a {
+				margin-right: 15px;
+			}
+			.socials {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				a {
+					display: block;
+					width: 30px;
+					height: 30px;
+					margin-right: 5px;
+					img {
+						display: block;
+						width: 100%;
+					}
+				}
+			}
+			.shop {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				.items {
+					border: 1px solid $white;
+					border-radius: 50%;
+					width: 30px;
+					height: 30px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					margin-left: 5px;
+					// line-height: 37px;
+					// text-align: center;
+				}
+			}
+			.langs {
+				span {
+					&.active {
+						color: $fnt_blue;
+					}
+				}
+			}
+		}
+	}
+	.burger {
+		display: none;
+		width: 30px;
+		height: 25px;
+
+		position: relative;
+		span {
+			display: block;
+			width: 25px;
+			height: 2px;
+			background-color: $white;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%);
+
+			&::before {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 100%;
+				height: 2px;
+				background-color: $white;
+				transform: translateY(-8px);
+			}
+			&::after {
+				position: absolute;
+				content: "";
+				display: block;
+				width: 100%;
+				height: 2px;
+				background-color: $white;
+				transform: translateY(8px);
+			}
+		}
+	}
+	@media (max-width: 1200px) {
+		.drop_down {
+			display: none;
+		}
+		.burger {
+			display: block;
+			cursor: pointer;
+		}
+	}
 }
