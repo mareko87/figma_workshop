@@ -1,0 +1,8 @@
+@keyframes bg_slideIn {
+	form {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0%);
+	}
+}

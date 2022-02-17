@@ -6,6 +6,7 @@
 	box-sizing: border-box;
 }
 @import "_variables";
+@import "_animation";
 body {
 	font-family: $fnt_main;
 	font-size: $fnt_size;
@@ -49,12 +50,14 @@ h2 {
 }
 
 section {
+	flex-wrap: wrap;
 	& > div:not(.middle) {
-		flex: 0 0 50%;
-		height: 45vw;
+		// flex: 0 0 50%;
+		// height: 45vw;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
 		.content {
 			width: 80%;
 			margin: 0 auto;
@@ -212,6 +215,12 @@ nav {
 			&.show_menu {
 				transform: translateX(0);
 			}
+			&.drop_fix {
+				position: fixed;
+				right: 0;
+				top: 20px;
+				padding: 55px 40px 25px 40px;
+			}
 			ul {
 				position: static;
 				transform: translateX(0);
@@ -252,6 +261,8 @@ nav {
 				width: 40px;
 				height: 40px;
 				border-radius: 50%;
+			}
+			&.shadow {
 				box-shadow: 0 0 5px rgba($white, 0.6);
 			}
 		}
@@ -264,6 +275,13 @@ section.hero {
 	align-items: center;
 	justify-content: space-between;
 	position: relative;
+	flex-wrap: wrap;
+	.left {
+		.content {
+			position: relative;
+			z-index: 1020;
+		}
+	}
 
 	.middle {
 		position: absolute;
@@ -284,6 +302,11 @@ section.hero {
 			height: 100%;
 			background: $accents;
 			z-index: 1010;
+			transform: translateX(-100%);
+			transition: 0.6s all ease-in-out;
+			&.anim {
+				transform: translateX(0);
+			}
 		}
 
 		img {
@@ -294,12 +317,30 @@ section.hero {
 			margin: 0 auto;
 		}
 	}
+	@media (max-width: 990px) {
+		.middle {
+			display: none;
+		}
+		.right {
+			.bg {
+				transform: translateX(0) translateY(-100%);
+				&.anim {
+					transform: translateX(0) translateY(0);
+				}
+			}
+			img {
+				width: unset;
+				height: 90%;
+			}
+		}
+	}
 }
 
 section.aboutUs {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-wrap: wrap;
 	.left {
 		img {
 			display: block;
@@ -317,6 +358,14 @@ section.aboutUs {
 			p {
 				color: $primary;
 			}
+		}
+	}
+	@media (max-width: 990px) {
+		.right {
+			order: 1;
+		}
+		.left {
+			order: 2;
 		}
 	}
 }
